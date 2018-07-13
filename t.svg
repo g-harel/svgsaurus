@@ -1,0 +1,9 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 -75 150 150">
+	<style>
+		text {
+			font: italic 75px sans-serif;
+		}
+	</style>
+	<text x="0" y="0" fill="orange">✨</text>
+</svg>

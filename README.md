@@ -1,1 +1,3 @@
 # sparklespark
+
+![test](./t.svg)
