@@ -13,7 +13,7 @@ import (
 var t = `
 <svg xmlns="http://www.w3.org/2000/svg"
 	 height="{{.Height}}"
-	 viewBox="-{{.X}} -{{.Y}} {{.Width}} {{.Height}}">
+	 viewBox="0 0 {{.Width}} {{.Height}}">
 	<style>
 		{{if .FontData -}}
 			<![CDATA[
@@ -24,7 +24,7 @@ var t = `
 			]]>
 		{{- end}}
 		text {
-			font-family: {{.Font}};
+			font-family: {{.Font}}, sans-serif;
 			font-size: {{.Size}}px;
 			{{if .Bold -}}
 				font-weight: bold;
@@ -37,7 +37,10 @@ var t = `
 			{{- end}}
 		}
 	</style>
-	<text fill="#{{.Color}}">{{.Text}}</text>
+	{{if .Background -}}
+		<rect width="{{.Width}}" height="{{.Height}}" style="fill:#{{.Background}};" />
+	{{- end}}
+	<text x="{{.X}}" y="{{.Y}}" fill="#{{.Color}}">{{.Text}}</text>
 </svg>
 `
 
@@ -51,11 +54,12 @@ type Config struct {
 	X      string
 	Y      string
 
-	Font      string
-	Color     string
-	Bold      bool
-	Italic    bool
-	Underline bool
+	Font       string
+	Color      string
+	Background string
+	Bold       bool
+	Italic     bool
+	Underline  bool
 
 	FontData string
 }
@@ -70,26 +74,28 @@ func (c *Config) FromMap(m map[string][]string) *Config {
 		return list[0]
 	}
 
-	c.Text = fallback("t", "svgsaurus")
-
-	// Use the replacement pattern to insert spaces
-	replace := fallback("r", "_")
-	c.Text = strings.Replace(c.Text, replace, " ", -1)
+	c.Text = fallback("t", "svgsaurus!")
 
 	c.Size = fallback("s", "55")
-	c.Width = fallback("w", "290")
+	c.Width = fallback("w", "340")
 	c.Height = fallback("h", "60")
 	c.X = fallback("x", "5")
-	c.Y = fallback("y", "45")
+	c.Y = fallback("y", "43")
 
-	c.Font = fallback("f", "lato")
-	c.Color = fallback("c", "ff1493")
-	options := fallback("o", "b")
+	c.Font = fallback("f", "courier_new")
+	c.Color = fallback("c", "0dd1e0")
+	c.Background = fallback("b", "1d0d33")
+	options := fallback("o", "bi")
 	c.Bold = strings.Index(options, "b") >= 0
 	c.Italic = strings.Index(options, "i") >= 0
 	c.Underline = strings.Index(options, "u") >= 0
 
-	return c.LoadFontData()
+	// Use the replacement pattern to insert spaces
+	replace := fallback("r", "_")
+	c.Text = strings.Replace(c.Text, replace, " ", -1)
+	c.Font = strings.Replace(c.Font, replace, " ", -1)
+
+	return c
 }
 
 // LoadFontData attempts to load font data into the config.
