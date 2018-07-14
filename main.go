@@ -1,8 +1,11 @@
 package main
 
 import (
+	"encoding/base64"
 	"html/template"
+	"io/ioutil"
 	"os"
+	"path"
 	"strings"
 )
 
@@ -12,12 +15,22 @@ var t = `
 	 height="{{.Height}}"
 	 viewBox="-{{.X}} -{{.Y}} {{.Width}} {{.Height}}">
 	<style>
+		{{if .FontData -}}
+			<![CDATA[
+				@font-face {
+					font-family: '{{.Font}}';
+					src: url('data:application/x-font-ttf;base64,{{.FontData}}');
+				}
+			]]>
+		{{- end}}
 		text {
-			font-weight: {{.Boldness}};
 			font-family: {{.Font}};
 			font-size: {{.Size}}px;
-			{{if .Italics -}}
-				font-style:italic;
+			{{if .Bold -}}
+				font-weight: bold;
+			{{- end}}
+			{{if .Italic -}}
+				font-style: italic;
 			{{- end}}
 			{{if .Underline -}}
 				text-decoration: underline;
@@ -40,9 +53,11 @@ type Config struct {
 
 	Font      string
 	Color     string
-	Boldness  string
-	Italics   bool
+	Bold      bool
+	Italic    bool
 	Underline bool
+
+	FontData string
 }
 
 // FromMap populates the Config's values from a query string type.
@@ -67,12 +82,53 @@ func (c *Config) FromMap(m map[string][]string) *Config {
 	c.X = fallback("x", "5")
 	c.Y = fallback("y", "45")
 
-	c.Font = fallback("f", "sans-serif")
+	c.Font = fallback("f", "lato")
 	c.Color = fallback("c", "ff1493")
-	c.Boldness = fallback("b", "600")
-	options := fallback("o", "i")
-	c.Italics = strings.Index(options, "i") >= 0
+	options := fallback("o", "b")
+	c.Bold = strings.Index(options, "b") >= 0
+	c.Italic = strings.Index(options, "i") >= 0
 	c.Underline = strings.Index(options, "u") >= 0
+
+	return c.LoadFontData()
+}
+
+// LoadFontData attempts to load font data into the config.
+func (c *Config) LoadFontData() *Config {
+	parts := []string{c.Font}
+	if c.Bold {
+		parts = append(parts, "bold")
+	}
+	if c.Italic {
+		parts = append(parts, "italic")
+	}
+	name := strings.Join(parts, "-")
+
+	dir, err := os.Getwd()
+	if err != nil {
+		return c
+	}
+
+	preserveTransforms := false
+	raw, err := ioutil.ReadFile(path.Join(dir, "fonts", name+".ttf"))
+	if err != nil {
+		// Do not retry if there were no transforms
+		if c.Font == name {
+			return c
+		}
+		raw, err = ioutil.ReadFile(path.Join(dir, "fonts", c.Font+".ttf"))
+		if err != nil {
+			return c
+		}
+		preserveTransforms = true
+	}
+
+	c.FontData = base64.StdEncoding.EncodeToString(raw)
+
+	// Font is already transformed in ttf file.
+	if !preserveTransforms {
+		c.Bold = false
+		c.Italic = false
+	}
 
 	return c
 }

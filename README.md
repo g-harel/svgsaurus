@@ -1,1 +1,1 @@
-![svgsaurus](./t.svg)
+![svgsaurus](./sample.svg)
