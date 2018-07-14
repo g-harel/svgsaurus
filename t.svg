@@ -1,9 +1,15 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 -75 150 150">
+<svg xmlns="http://www.w3.org/2000/svg"
+	 height="60"
+	 viewBox="-5 -45 290 60">
 	<style>
 		text {
-			font: italic 75px sans-serif;
+			font-weight: 600;
+			font-family: sans-serif;
+			font-size: 55px;
+			font-style:italic;
+			
 		}
 	</style>
-	<text x="0" y="0" fill="orange">✨</text>
+	<text fill="#ff1493">svgsaurus</text>
 </svg>
