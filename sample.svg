@@ -1,17 +1,1 @@
-
-<svg xmlns="http://www.w3.org/2000/svg"
-	 height="60"
-	 viewBox="0 0 340 60">
-	<style>
-		
-		text {
-			font-family: courier new, sans-serif;
-			font-size: 55px;
-			font-weight: bold;
-			font-style: italic;
-			
-		}
-	</style>
-	<rect width="340" height="60" style="fill:#1d0d33;" />
-	<text x="5" y="43" fill="#0dd1e0">svgsaurus!</text>
-</svg>
+ <svg xmlns="http://www.w3.org/2000/svg" height="60" viewBox="0 0 340 60"> <style> text { font-family: courier new, sans-serif; font-size: 55px;font-weight: bold;font-style: italic; } </style> <rect width="340" height="60" style="fill:#1d0d33;" /> <text x="5" y="43" fill="#0dd1e0" > svgsaurus! </text> </svg>
