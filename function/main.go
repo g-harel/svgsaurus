@@ -22,6 +22,7 @@ func main() {
 		}
 
 		w.Header().Add("Content-Type", "image/svg+xml")
+		w.Header().Add("Cache-Control", "public, max-age=900, s-maxage=900")
 		w.Write(svg)
 	})
 }

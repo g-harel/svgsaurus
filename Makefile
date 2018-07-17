@@ -1,9 +1,9 @@
-ECHO = echo
-GIT = git
-GO = go
-MKDIR = mkdir
-MV = mv
-RM = rm
+ECHO=echo
+GIT=git
+GO=go
+MKDIR=mkdir
+MV=mv
+RM=rm
 
 #
 
