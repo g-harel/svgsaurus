@@ -48,8 +48,3 @@ gcloud beta functions deploy \
     --memory=128MB \
     --timeout=1s \
     --trigger-http
-
-# check that firebase cli is configured
-firebase list
-
-firebase deploy
