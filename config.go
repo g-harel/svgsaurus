@@ -2,7 +2,6 @@ package svgsaurus
 
 import (
 	"bytes"
-	"net/url"
 	"regexp"
 	"strings"
 )
@@ -28,13 +27,12 @@ type Config struct {
 }
 
 // FromQuery populates the Config's values from a url query.
-func (c *Config) FromQuery(m url.Values) *Config {
+func (c *Config) FromQuery(q map[string]string) *Config {
 	fallback := func(key string, def string) string {
-		list := m[key]
-		if list == nil || len(list) < 1 {
+		if q[key] == "" {
 			return def
 		}
-		return list[0]
+		return q[key]
 	}
 
 	c.Text = fallback("t", "svgsaurus")

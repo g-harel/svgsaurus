@@ -1,28 +1,30 @@
 package main
 
 import (
-	"flag"
-	"net/http"
-
-	"github.com/GoogleCloudPlatform/cloud-functions-go/nodego"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/g-harel/svgsaurus"
 )
 
+// Handler responds to http requests.
+func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	svg, err := new(svgsaurus.Config).FromQuery(request.QueryStringParameters).Render()
+	if err != nil {
+		return events.APIGatewayProxyResponse{}, err
+	}
+
+	return events.APIGatewayProxyResponse{
+		Body:       string(svg),
+		StatusCode: 200,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin": "*",
+			"Content-Type":                "image/svg+xml",
+			"Cache-Control":               "public, max-age=900, s-maxage=900",
+		},
+	}, nil
+
+}
+
 func main() {
-	flag.Parse()
-	defer nodego.TakeOver()
-
-	http.HandleFunc(nodego.HTTPTrigger, func(w http.ResponseWriter, r *http.Request) {
-		svg, err := new(svgsaurus.Config).FromQuery(r.URL.Query()).Render()
-		if err != nil {
-			nodego.ErrorLogger.Print(err)
-			status := http.StatusInternalServerError
-			http.Error(w, http.StatusText(status), status)
-			return
-		}
-
-		w.Header().Add("Content-Type", "image/svg+xml")
-		w.Header().Add("Cache-Control", "public, max-age=900, s-maxage=900")
-		w.Write(svg)
-	})
+	lambda.Start(Handler)
 }
