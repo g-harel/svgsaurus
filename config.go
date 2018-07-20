@@ -35,7 +35,7 @@ func (c *Config) FromQuery(q map[string]string) *Config {
 		return q[key]
 	}
 
-	c.Text = fallback("t", "svgsaurus")
+	c.Text = q["t"]
 
 	c.Size = fallback("s", "55")
 	c.Width = fallback("w", "265")
