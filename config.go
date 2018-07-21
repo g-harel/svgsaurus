@@ -29,13 +29,14 @@ type Config struct {
 // FromQuery populates the Config's values from a url query.
 func (c *Config) FromQuery(q map[string]string) *Config {
 	fallback := func(key string, def string) string {
-		if q[key] == "" {
+		val, ok := q[key]
+		if !ok {
 			return def
 		}
-		return q[key]
+		return val
 	}
 
-	c.Text = q["t"]
+	c.Text = fallback("t", "svgsaurus")
 
 	c.Size = fallback("s", "55")
 	c.Width = fallback("w", "265")
