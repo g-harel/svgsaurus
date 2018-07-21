@@ -26,7 +26,7 @@ type Config struct {
 	Underline  bool
 }
 
-// FromQuery populates the Config's values from a url query.
+// FromQuery populates the Config's values from query params.
 func (c *Config) FromQuery(q map[string]string) *Config {
 	fallback := func(key string, def string) string {
 		val, ok := q[key]
