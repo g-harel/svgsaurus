@@ -1,26 +1,31 @@
+![svgsaurus](https://user-images.githubusercontent.com/9319710/43561245-2f4bb106-95e4-11e8-814e-25b2ddd87bff.png)
+
+![λ](https://svgsaur.us?t=λ&h=40&w=24&y=29&s=28&c=999&o=b) ![svgsaurus](https://svgsaur.us?s=34&o=b&h=40&y=30&c=222) ![](https://svgsaur.us?t=&w=1&h=52)
+
 <div style="text-align: center;">
-      <img alt="purple" src="https://svgsaur.us?b=9400d3&t=_&h=4&w=120"
-    /><img alt="purple" src="https://svgsaur.us?b=4b0082&t=_&h=4&w=120"
-    /><img alt="blue" src="https://svgsaur.us?b=0000ff&t=_&h=4&w=120"
-    /><img alt="green" src="https://svgsaur.us?b=00ff00&t=_&h=4&w=120"
-    /><img alt="yellow" src="https://svgsaur.us?b=ffff00&t=_&h=4&w=120"
-    /><img alt="orange" src="https://svgsaur.us?b=ff7f00&t=_&h=4&w=120"
-    /><img alt="red" src="https://svgsaur.us?b=ff0000&t=_&h=4&w=120" />
+      <img alt="purple" src="https://svgsaur.us?b=9400d3&t=_&h=2&w=148"
+    /><img alt="blue" src="https://svgsaur.us?b=0000ff&t=_&h=2&w=148"
+    /><img alt="green" src="https://svgsaur.us?b=00ff00&t=_&h=2&w=148"
+    /><img alt="yellow" src="https://svgsaur.us?b=ffff00&t=_&h=2&w=148"
+    /><img alt="orange" src="https://svgsaur.us?b=ff7f00&t=_&h=2&w=148"
+    /><img alt="red" src="https://svgsaur.us?b=ff0000&t=_&h=2&w=148" />
 </div>
 
-# ![λ](https://svgsaur.us?t=λ&h=20&w=26&y=23&s=30&c=999) svgsaurus
+&nbsp;
 
 > svg generation by query string
 
-Spice up your READMEs with custom font-size, color, padding and much more!
+* Live editing of output image using query params
+* Fine-grained control over font's size, color, family, etc.
+* Easily control padding and position of text
+* Use background color to generate colorful accents
+* Precisely position content with spacer images
 
-## Usage
+## Usage ![](https://svgsaur.us?t=&w=1&h=40)
 
-This project is deployed as a lambda function responding to requests at https://svgsaur.us.
+This project is deployed as a lambda function responding to requests at [svgsaur.us](https://svgsaur.us).
 
 Use the url's query string to customize the generated svg image.
-
-Don't be affraid to get creative with emojis and background colors!
 
 <table>
     <tr>
@@ -113,4 +118,6 @@ Don't be affraid to get creative with emojis and background colors!
 
 [MIT](./LICENSE)
 
-![made with computer](https://svgsaur.us/?t=Made_with_💻_by_✋&o=b&b=f1f1f1&s=20&w=888&h=260&x=360&y=135&f=arial)
+&nbsp;
+
+![made with computer](https://svgsaur.us/?t=Made_with_💻_by_✋&o=b&b=f8f8f8&s=20&w=888&h=260&x=360&y=135)
