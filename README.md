@@ -2,18 +2,9 @@
 
 ![λ](https://svgsaur.us?t=λ&h=40&w=24&y=29&s=28&c=999&o=b) ![svgsaurus](https://svgsaur.us?s=34&o=b&h=40&y=30&c=222) ![](https://svgsaur.us?t=&w=1&h=52)
 
-<div style="text-align: center;">
-      <img alt="purple" src="https://svgsaur.us?b=9400d3&t=_&h=2&w=148"
-    /><img alt="blue" src="https://svgsaur.us?b=0000ff&t=_&h=2&w=148"
-    /><img alt="green" src="https://svgsaur.us?b=00ff00&t=_&h=2&w=148"
-    /><img alt="yellow" src="https://svgsaur.us?b=ffff00&t=_&h=2&w=148"
-    /><img alt="orange" src="https://svgsaur.us?b=ff7f00&t=_&h=2&w=148"
-    /><img alt="red" src="https://svgsaur.us?b=ff0000&t=_&h=2&w=148" />
-</div>
+![](https://svgsaur.us?t=&w=888&h=2&b=5ac2bc)
 
-&nbsp;
-
-> svg generation by query string
+![](https://svgsaur.us?t=&w=5&h=32&b=5ac2bc)![](https://svgsaur.us/?t=svg_generation_by_query_string&w=240&h=32&s=16&y=21&x=12&b=f8f8f8&f=arial) ![](https://svgsaur.us?t=&w=1&h=48&)
 
 * Live editing of output image using query params
 * Fine-grained control over font's size, color, family, etc.
@@ -88,15 +79,15 @@ Use the url's query string to customize the generated svg image.
         <td><code>c</code></td>
         <td><code>font color</code></td>
         <td><code>000000</code></td>
-        <td><code>https://svgsaur.us?c=999</code></td>
-        <td><img src="https://svgsaur.us?c=999" /></td>
+        <td><code>https://svgsaur.us?c=5ac2bc</code></td>
+        <td><img src="https://svgsaur.us?c=5ac2bc" /></td>
     </tr>
     <tr>
         <td><code>b</code></td>
         <td><code>box color</code></td>
         <td><code>&nbsp;</code></td>
-        <td><code>https://svgsaur.us?b=999</code></td>
-        <td><img src="https://svgsaur.us?b=999" /></td>
+        <td><code>https://svgsaur.us?b=5ac2bc</code></td>
+        <td><img src="https://svgsaur.us?b=5ac2bc" /></td>
     </tr>
     <tr>
         <td><code>o</code></td>
