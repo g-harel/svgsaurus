@@ -14,7 +14,7 @@
 
 ## Usage ![](https://svgsaur.us?t=&w=1&h=40)
 
-This project is deployed as a lambda function responding to requests at [svgsaur.us](https://svgsaur.us).
+This project is deployed as a [lambda function](https://aws.amazon.com/lambda/) responding to requests at [svgsaur.us](https://svgsaur.us).
 
 Use the url's query string to customize the generated svg image.
 
